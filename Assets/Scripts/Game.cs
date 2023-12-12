@@ -50,17 +50,16 @@ public class Game : MonoBehaviour
         break;
     }
 
-    int count = 0;
+    float count = 0;
 
-	while(true){
-		if(Input.GetKeyDown(KeyCode.UpArrow)){
-			Debug.Log("上矢印キーが押されたよ");
-			break;
-		}
-		count++;
+	// 上矢印が押されるまでcountを増やす
+	while (!Input.GetKeyDown(KeyCode.UpArrow))
+	{
+	  count++;
+	  yield return null;
 	}
 
-    Debug.Log(count);
+    Debug.Log($"押すまでの時間: {count/1000}");
 
   }
 
