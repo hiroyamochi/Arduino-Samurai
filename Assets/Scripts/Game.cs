@@ -50,7 +50,15 @@ public class Game : MonoBehaviour
         break;
     }
 
-    int count = Battle();
+    int count = 0;
+
+	while(true){
+		if(Input.GetKeyDown(KeyCode.UpArrow)){
+			Debug.Log("上矢印キーが押されたよ");
+			break;
+		}
+		count++;
+	}
 
     Debug.Log(count);
 
@@ -75,25 +83,6 @@ public class Game : MonoBehaviour
     if (objectRenderer != null)
     {
         objectRenderer.material.color = newColor;
-    }
-  }
-
-  private int Battle()
-  {
-    int count = 0;
-
-    while (true)
-    {
-      if (Input.GetKeyDown(KeyCode.UpArrow))
-      {
-        Debug.Log("上矢印キーが押されたよ");
-        return count;
-      }
-      else
-      {
-        count++;
-        continue;
-      }
     }
   }
 }
