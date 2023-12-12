@@ -12,8 +12,8 @@ public class SerialManager : MonoBehaviour
     string receive_data;            //受信した生データを入れる変数
 
     //送信用変数
-    bool onoff = true;              //オンオフどちらにするかを決定する変数（今回はオンで固定）
-    bool cansend = true;            //送信するかどうかを判断する変数
+    bool isON = true;              //オンオフどちらにするかを決定する変数（今回はオンで固定）
+    bool canSend = true;            //送信するかどうかを判断する変数
     
 
     void Start()
@@ -31,7 +31,7 @@ public class SerialManager : MonoBehaviour
 
     private void Update()
     {
-        if (onoff)
+        if (isON)
         {
             usendmsg();     //オン用メソッド呼び出し
         }
@@ -44,22 +44,22 @@ public class SerialManager : MonoBehaviour
     //オン用メソッド
     void usendmsg()
     {
-        if (cansend == true)            //送信可能かチェック
+        if (canSend == true)            //送信可能かチェック
         {
             serialHandler.Write("1");   //Arduinoに1を送信
             Debug.Log("1を送信");
-            cansend = false;            //オフになるまで送信不可に設定
+            canSend = false;            //オフになるまで送信不可に設定
         }
     }
 
     //オフ用メソッド
     void dsendmsg()
     {
-        if (cansend == false)           //送信可能かチェック
+        if (canSend == false)           //送信可能かチェック
         {
             serialHandler.Write("0");   //Arduinoに0を送信
             Debug.Log("0を送信");
-            cansend = true;             //オフになるまで送信不可に設定
+            canSend = true;             //オフになるまで送信不可に設定
         }
     }
 }
