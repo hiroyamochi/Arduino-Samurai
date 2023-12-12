@@ -5,55 +5,55 @@ using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-      // スペースキーでゲーム開始
+      // 刹那のスペースキーでゲーム開始
       if (Input.GetKeyDown(KeyCode.Space))
       {
         // 開始エフェクトを再生
-        GameStart(); // ゲーム開始処理を呼び出す 
+        StartCoroutine(GameStart()); // ゲーム開始処理をコルーチンとして呼び出す 
       }
         
     }
 
-    void GameStart()
+    private IEnumerator GameStart()
     {
-      Debug.Log("ゲームを開始しました");
+      Debug.Log("ゲームを開始したよ");
       
-      StartCoroutine(Countdown());
+      yield return StartCoroutine(Countdown());
 
       // 0~2のランダムな数値を取得
       Debug.Log("待ったよ");
-
       int number = Random.Range(0, 3);
 
       switch (number)
       {
           case 0:
-              Debug.Log("グー");
+              Debug.Log("いまから光るよ!!");
               break;
           case 1:
-              Debug.Log("チョキ");
+              Debug.Log("いまから鳴るよ!!");
               break;
           case 2:
-              Debug.Log("パー");
+              Debug.Log("いまから震えるよ!!");
               break;
       }
+
     }
 
+    // 刹那のカウントダウン処理
     private IEnumerator Countdown()
     {
 
-      float waitSecond = Random.Range(4, 10);
+      float waitSecond = Random.Range(3, 8);
 
-      Debug.Log(waitSecond);
+      Debug.Log($"待機時間: {waitSecond}秒");
 
       yield return new WaitForSeconds(waitSecond);
 
