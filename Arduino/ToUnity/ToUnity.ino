@@ -1,3 +1,7 @@
+// 
+// https://qiita.com/hoktist/items/8e3ae56fd5f12c93dea8
+// 
+
 const int LED = 13; //LEDは13番ピンのものを使用
 int recieved;            //Unityから送られてくる値を格納する変数
 
